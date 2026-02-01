@@ -2,14 +2,14 @@ pipeline {
   agent {
     docker {
       image 'awais684/maven-jenkin:latest'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
   stages {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'master', url: 'https://github.com/awais684/java-maven-sonar-argocd-helm-k8s.git'
+        git branch: 'master', url: 'https://github.com/awais684/java-maven-sonar-argocd-helm-k8s.git'
       }
     }
     stage('Build and Test') {
