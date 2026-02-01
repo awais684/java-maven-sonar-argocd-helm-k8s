@@ -4,8 +4,8 @@ pipeline {
   stage('Checkout') {
   steps {
     git branch: 'master', url: 'https://github.com/awais684/java-maven-sonar-argocd-helm-k8s.git'
-  }
-}
+      }
+    }
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
