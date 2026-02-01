@@ -1,13 +1,16 @@
-# You can change this base image to anything else
-# But make sure to use the correct version of Java
-FROM adoptopenjdk/openjdk11:alpine-jre
+# Java 21 runtime image (recommended)
+FROM eclipse-temurin:21-jre
 
-# Simply the artifact path
-ARG artifact=target/spring-boot-web.jar
+# Path of jar produced by Maven build
+ARG JAR_FILE=target/spring-boot-web.jar
 
 WORKDIR /opt/app
 
-COPY ${artifact} app.jar
+# Copy jar into image
+COPY ${JAR_FILE} app.jar
 
-# This should not be changed
+# Optional: expose your app port (change if different)
+EXPOSE 8080
+
+# Run app
 ENTRYPOINT ["java","-jar","app.jar"]
