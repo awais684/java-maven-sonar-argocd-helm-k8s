@@ -1,10 +1,10 @@
-pipeline {
-  agent {
-    docker {
-      image 'awais684/maven-jenkin:latest'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
+agent {
+  docker {
+    image 'awais684/maven-jenkin:latest'
+    args '-e HOME=/tmp -v /var/run/docker.sock:/var/run/docker.sock'
+    reuseNode true
   }
+}
   stages {
     stage('Checkout') {
       steps {
