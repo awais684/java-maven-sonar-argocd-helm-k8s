@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'awais684/maven-jenkin:latest'
+      image 'maven:3.9-eclipse-temurin-21 '
       args '-e HOME=/tmp -v /var/run/docker.sock:/var/run/docker.sock'
       reuseNode true
     }
